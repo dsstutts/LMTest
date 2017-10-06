@@ -2,7 +2,7 @@
 File: expdatgen.py
 Author: Dr. D. S. Stutts
 First release: 12-18-2015
-
+Revised 10-6-2017 to work with Python 3.6.2
 Generates sample data for exponential curve fit example.
 Based on expdatgen.m by D. S. Stutts: 2-4-2014
 """
