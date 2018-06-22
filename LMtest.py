@@ -46,9 +46,9 @@ for more information.
     res(z, yy, r) = function returning the residual (difference between
           the model and the data) provided by the user, and
           called by leastsq().  The first argument, z, contains an array
-          of the unknown parameters, the second argument contains
-          the third argument contains an array of the independent 
-          veriables -- x, in this case.
+          of the unknown parameters, the second argument contains the measured 
+          dependant veriable, and the third argument contains an array of the 
+          independent veriables -- x, in this case.
     x0 = initial quess solution vector provided by the user.
     
     args = comma separated list of additional arguments (other than
