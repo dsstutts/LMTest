@@ -14,7 +14,7 @@ cur_version = sys.version_info
 
 """
 LMtest.py
-Author: Dr. D. S. Stutts 
+Author: Dr. D. S. Stutts
 Original release: 12-18-2015
 Port of LMFtest.m by D. S. Stutts 2-5-2014
 
@@ -31,14 +31,14 @@ for more information.
 
  Data is supplied in the file data.txt as tab-delimitted (x,y) pairs
  of floating point numbers.
- 
+
  Unknown parameter vector: z
  Curve to fit is: F(r,z) = z[0]+z[1]*exp(z[2]*r)
  Solution is: z[0] = 0.625, z[1] = 1.33, and z[2] = -0.5
 
  Initial guess vector: x0=[1,1,-1]
  Care must be taken to choose an initial guess vector
- which will allow the algorithm to converge. For example, 
+ which will allow the algorithm to converge. For example,
  the above choice converges, but [1,1,1] and [0,0,0] do not.
  The function call to leastsq() is:
  leastsq(rez, x0, args=(yy, xx), full_output=1)
@@ -46,14 +46,14 @@ for more information.
     res(z, yy, r) = function returning the residual (difference between
           the model and the data) provided by the user, and
           called by leastsq().  The first argument, z, contains an array
-          of the unknown parameters, the second argument contains the measured 
-          dependant veriable, and the third argument contains an array of the 
+          of the unknown parameters, the second argument contains the measured
+          dependant veriable, and the third argument contains an array of the
           independent veriables -- x, in this case.
     x0 = initial quess solution vector provided by the user.
-    
+
     args = comma separated list of additional arguments (other than
     z) called by res().
-    
+
     full_output = Boolean variable (False, True, or 0, 1 (or any non-zero
     number)).  When set to True, leastsq() returns all of the optional
     output parameters, including an array of the residuals which is
@@ -63,11 +63,11 @@ for more information.
 
     From the command line:
 
-    python LMFTest.py data.txt
+    python LMTest.py data.txt
 
     From an iPython or Jupyter interactive console:
 
-    run LMFTest.py data.txt
+    run LMTest.py data.txt
 
 """
 # Create empty lists:
@@ -115,13 +115,13 @@ close(infile)
 # Define the model:
 def F(r,z):
     return z[0]+z[1]*exp(z[2]*r)
-    
+
 # Define the residual function:
-def rez(z, yy, r):  
+def rez(z, yy, r):
     return yy - F(r,z)
-    
-x0=[1,1,-1]# Initial guess  
-  
+
+x0=[1,1,-1]# Initial guess
+
 # Find the best values:
 output = leastsq(rez, x0, args=(yy, xx), full_output=1)
 err2 = output[2]['fvec']*output[2]['fvec'] #Squared deviations
